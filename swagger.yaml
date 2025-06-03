@@ -1,0 +1,50 @@
+openapi: 3.0.0
+info:
+  title: Document Chatbot API
+  version: "1.0"
+paths:
+  /upload:
+    post:
+      summary: Upload a document
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: File uploaded
+
+  /delete:
+    delete:
+      summary: Delete a document
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                filename:
+                  type: string
+      responses:
+        '200':
+          description: File deleted
+
+  /message:
+    post:
+      summary: Chat with the document bot
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: string
+      responses:
+        '200':
+          description: Bot response
